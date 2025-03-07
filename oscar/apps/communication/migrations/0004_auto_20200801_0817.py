@@ -6,21 +6,29 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('communication', '0003_remove_notification_category_make_code_uppercase'),
+        ("communication", "0003_remove_notification_category_make_code_uppercase"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='communicationeventtype',
-            options={'ordering': ['name'], 'verbose_name': 'Communication event type', 'verbose_name_plural': 'Communication event types'},
+            name="communicationeventtype",
+            options={
+                "ordering": ["name"],
+                "verbose_name": "Communication event type",
+                "verbose_name_plural": "Communication event types",
+            },
         ),
         migrations.AlterModelOptions(
-            name='email',
-            options={'ordering': ['-date_sent'], 'verbose_name': 'Email', 'verbose_name_plural': 'Emails'},
+            name="email",
+            options={
+                "ordering": ["-date_sent"],
+                "verbose_name": "Email",
+                "verbose_name_plural": "Emails",
+            },
         ),
         migrations.AlterField(
-            model_name='communicationeventtype',
-            name='name',
-            field=models.CharField(db_index=True, max_length=255, verbose_name='Name'),
+            model_name="communicationeventtype",
+            name="name",
+            field=models.CharField(db_index=True, max_length=255, verbose_name="Name"),
         ),
     ]

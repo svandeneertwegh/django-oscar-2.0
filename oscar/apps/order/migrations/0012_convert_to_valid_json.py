@@ -30,12 +30,10 @@ def forward(apps, schema_editor):
 
 class Migration(migrations.Migration):
 
-    replaces = [
-        ('order', '0012_json_option_value')
-    ]
+    replaces = [("order", "0012_json_option_value")]
 
     dependencies = [
-        ('order', '0011_auto_20200801_0817'),
+        ("order", "0011_auto_20200801_0817"),
     ]
 
     operations = [

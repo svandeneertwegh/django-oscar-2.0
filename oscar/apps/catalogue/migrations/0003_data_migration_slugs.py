@@ -14,18 +14,18 @@ from oscar.core.loading import get_model
 # ORM model. We MUST NOT use that to save data, we just fetch
 # the property.
 
-ORMCategory = get_model('catalogue', 'Category')
+ORMCategory = get_model("catalogue", "Category")
 
 
 def remove_ancestor_slugs(apps, schema_editor):
-    MigrationCategory = apps.get_model('catalogue', 'Category')
+    MigrationCategory = apps.get_model("catalogue", "Category")
     for category in MigrationCategory.objects.all():
         category.slug = category.slug.split(ORMCategory._slug_separator)[-1]
         category.save()
 
 
 def add_ancestor_slugs(apps, schema_editor):
-    MigrationCategory = apps.get_model('catalogue', 'Category')
+    MigrationCategory = apps.get_model("catalogue", "Category")
     for category in MigrationCategory.objects.all():
         orm_category = ORMCategory.objects.get(pk=category.pk)
         category.slug = orm_category.full_slug
@@ -35,7 +35,7 @@ def add_ancestor_slugs(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalogue', '0002_auto_20150217_1221'),
+        ("catalogue", "0002_auto_20150217_1221"),
     ]
 
     operations = [

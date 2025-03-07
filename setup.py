@@ -7,7 +7,7 @@ from setuptools.command import build as build_module
 from setuptools import setup, find_packages
 
 PROJECT_DIR = os.path.dirname(__file__)
-sys.path.append(os.path.join(PROJECT_DIR, "src"))
+sys.path.append(os.path.join(PROJECT_DIR))
 
 from oscar import get_version  # noqa isort:skip
 
@@ -21,8 +21,8 @@ class BuildNPM(build_module.build):
 
 setup(
     cmdclass={"build": BuildNPM},
-    package_dir={"": "src"},
-    packages=find_packages("src"),
+    package_dir={},
+    packages=find_packages(),
     include_package_data=True,
     version=get_version(),
 )

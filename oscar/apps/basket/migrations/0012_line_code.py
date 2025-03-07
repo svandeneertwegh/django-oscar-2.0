@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('basket', '0011_json_basket_option'),
+        ("basket", "0011_json_basket_option"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='line',
-            name='tax_code',
-            field=models.CharField(blank=True, max_length=64, null=True, verbose_name='VAT rate code'),
+            model_name="line",
+            name="tax_code",
+            field=models.CharField(
+                blank=True, max_length=64, null=True, verbose_name="VAT rate code"
+            ),
         ),
     ]

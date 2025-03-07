@@ -6,12 +6,12 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalogue', '0024_remove_duplicate_attributes'),
+        ("catalogue", "0024_remove_duplicate_attributes"),
     ]
 
     operations = [
         migrations.AlterUniqueTogether(
-            name='productattribute',
-            unique_together={('code', 'product_class')},
+            name="productattribute",
+            unique_together={("code", "product_class")},
         ),
     ]

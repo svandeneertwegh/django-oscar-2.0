@@ -13,7 +13,7 @@ def assign_permissions_to_staff_users(apps, schema_editor):
     User = get_user_model()
     UserGroup = User.groups.through
     user_groups = []
-    
+
     permission_codes = [
         # Catalogue
         "catalogue.add_product",
@@ -36,13 +36,11 @@ def assign_permissions_to_staff_users(apps, schema_editor):
         "catalogue.change_option",
         "catalogue.view_option",
         "catalogue.delete_option",
-        
         # Communications
         "communication.add_communicationeventtype",
         "communication.change_communicationeventtype",
         "communication.view_communicationeventtype",
         "communication.delete_communicationeventtype",
-        
         # Partners
         "partner.add_stockalert",
         "partner.change_stockalert",
@@ -52,55 +50,46 @@ def assign_permissions_to_staff_users(apps, schema_editor):
         "partner.change_partner",
         "partner.view_partner",
         "partner.delete_partner",
-        
         # Offers
         "offer.add_conditionaloffer",
         "offer.change_conditionaloffer",
         "offer.view_conditionaloffer",
         "offer.delete_conditionaloffer",
-        
         # Orders
         "order.add_order",
         "order.change_order",
         "order.view_order",
         "order.delete_order",
-        
         # Flat Pages
         "flatpages.add_flatpage",
         "flatpages.change_flatpage",
         "flatpages.view_flatpage",
         "flatpages.delete_flatpage",
-        
         # Ranges
         "offer.add_range",
         "offer.change_range",
         "offer.view_range",
         "offer.delete_range",
-       
         # Analytics
         "analytics.add_userrecord",
         "analytics.change_userrecord",
         "analytics.view_userrecord",
         "analytics.delete_userrecord",
-        
         # Reviews
         "reviews.add_productreview",
         "reviews.change_productreview",
         "reviews.view_productreview",
         "reviews.delete_productreview",
-        
         # Shipping
         "add_weightbased",
         "change_weightbased",
         "delete_weightbased",
         "view_weightbased",
-
         # Users
         f"{User._meta.app_label}.add_user",
         f"{User._meta.app_label}.change_user",
         f"{User._meta.app_label}.view_user",
         f"{User._meta.app_label}.delete_user",
-       
         # Vouchers
         "voucher.add_voucher",
         "voucher.change_voucher",
@@ -116,9 +105,11 @@ def assign_permissions_to_staff_users(apps, schema_editor):
     dashboard_permissions_group.permissions.set(permissions)
     dashboard_permissions_group.save()
 
-    for user_id in User.objects.filter(is_staff=True, is_superuser=False).values_list("id", flat=True):
+    for user_id in User.objects.filter(is_staff=True, is_superuser=False).values_list(
+        "id", flat=True
+    ):
         user_groups.append(
-            UserGroup(user_id=user_id, group_id=dashboard_permissions_group.id)   
+            UserGroup(user_id=user_id, group_id=dashboard_permissions_group.id)
         )
     UserGroup.objects.bulk_create(user_groups)
 
@@ -139,5 +130,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(assign_permissions_to_staff_users, migrations.RunPython.noop)
+        migrations.RunPython(
+            assign_permissions_to_staff_users, migrations.RunPython.noop
+        )
     ]

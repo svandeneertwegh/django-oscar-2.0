@@ -9,13 +9,15 @@ import oscar.models.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('offer', '0002_auto_20151210_1053'),
+        ("offer", "0002_auto_20151210_1053"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='condition',
-            name='proxy_class',
-            field=oscar.models.fields.NullCharField(default=None, max_length=255, verbose_name='Custom class'),
+            model_name="condition",
+            name="proxy_class",
+            field=oscar.models.fields.NullCharField(
+                default=None, max_length=255, verbose_name="Custom class"
+            ),
         ),
     ]

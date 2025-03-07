@@ -9,18 +9,28 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('offer', '0004_auto_20170415_1518'),
+        ("offer", "0004_auto_20170415_1518"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='conditionaloffer',
-            name='benefit',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='offers', to='offer.Benefit', verbose_name='Benefit'),
+            model_name="conditionaloffer",
+            name="benefit",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="offers",
+                to="offer.Benefit",
+                verbose_name="Benefit",
+            ),
         ),
         migrations.AlterField(
-            model_name='conditionaloffer',
-            name='condition',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='offers', to='offer.Condition', verbose_name='Condition'),
+            model_name="conditionaloffer",
+            name="condition",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="offers",
+                to="offer.Condition",
+                verbose_name="Condition",
+            ),
         ),
     ]

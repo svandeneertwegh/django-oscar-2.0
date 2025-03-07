@@ -8,33 +8,41 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalogue', '0015_product_is_public'),
+        ("catalogue", "0015_product_is_public"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='productattributevalue',
-            name='value_boolean',
-            field=models.NullBooleanField(db_index=True, verbose_name='Boolean'),
+            model_name="productattributevalue",
+            name="value_boolean",
+            field=models.NullBooleanField(db_index=True, verbose_name="Boolean"),
         ),
         migrations.AlterField(
-            model_name='productattributevalue',
-            name='value_date',
-            field=models.DateField(blank=True, db_index=True, null=True, verbose_name='Date'),
+            model_name="productattributevalue",
+            name="value_date",
+            field=models.DateField(
+                blank=True, db_index=True, null=True, verbose_name="Date"
+            ),
         ),
         migrations.AlterField(
-            model_name='productattributevalue',
-            name='value_datetime',
-            field=models.DateTimeField(blank=True, db_index=True, null=True, verbose_name='DateTime'),
+            model_name="productattributevalue",
+            name="value_datetime",
+            field=models.DateTimeField(
+                blank=True, db_index=True, null=True, verbose_name="DateTime"
+            ),
         ),
         migrations.AlterField(
-            model_name='productattributevalue',
-            name='value_float',
-            field=models.FloatField(blank=True, db_index=True, null=True, verbose_name='Float'),
+            model_name="productattributevalue",
+            name="value_float",
+            field=models.FloatField(
+                blank=True, db_index=True, null=True, verbose_name="Float"
+            ),
         ),
         migrations.AlterField(
-            model_name='productattributevalue',
-            name='value_integer',
-            field=models.IntegerField(blank=True, db_index=True, null=True, verbose_name='Integer'),
+            model_name="productattributevalue",
+            name="value_integer",
+            field=models.IntegerField(
+                blank=True, db_index=True, null=True, verbose_name="Integer"
+            ),
         ),
     ]

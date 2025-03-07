@@ -30,12 +30,10 @@ def forward(apps, schema_editor):
 
 class Migration(migrations.Migration):
 
-    replaces = [
-        ('basket', '0010_json_basket_option')
-    ]
+    replaces = [("basket", "0010_json_basket_option")]
 
     dependencies = [
-        ('basket', '0009_line_date_updated'),
+        ("basket", "0009_line_date_updated"),
     ]
 
     operations = [

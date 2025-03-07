@@ -7,8 +7,8 @@ def make_voucher_names_unique(apps, schema_editor):
     """
     Appends a number to non-unique voucher names.
     """
-    Voucher = apps.get_model('voucher', 'Voucher')
-    vouchers = Voucher.objects.order_by('date_created')
+    Voucher = apps.get_model("voucher", "Voucher")
+    vouchers = Voucher.objects.order_by("date_created")
     # Find vouchers with non-unique names
     vouchers_for_name = {}
     for voucher in vouchers:
@@ -18,14 +18,17 @@ def make_voucher_names_unique(apps, schema_editor):
     # Change names for vouchers with non-unique names
     for voucher in vouchers:
         if len(vouchers_for_name[voucher.name]) > 1:
-            voucher.name = "%s - %d" % (voucher.name, vouchers_for_name[voucher.name].index(voucher.id) + 1)
+            voucher.name = "%s - %d" % (
+                voucher.name,
+                vouchers_for_name[voucher.name].index(voucher.id) + 1,
+            )
             voucher.save()
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('voucher', '0008_auto_20200801_0817'),
+        ("voucher", "0008_auto_20200801_0817"),
     ]
 
     operations = [

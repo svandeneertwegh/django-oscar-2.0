@@ -7,11 +7,11 @@ from django.db import migrations
 from oscar.core.loading import get_model
 
 
-ORMUserAddress = get_model('address', 'UserAddress')
+ORMUserAddress = get_model("address", "UserAddress")
 
 
 def regenerate_user_address_hashes(apps, schema_editor):
-    MigrationUserAddress = apps.get_model('address', 'UserAddress')
+    MigrationUserAddress = apps.get_model("address", "UserAddress")
     for user_address in MigrationUserAddress.objects.all():
         orm_user_address = ORMUserAddress.objects.get(id=user_address.id)
         user_address.hash = orm_user_address.generate_hash()
@@ -21,7 +21,7 @@ def regenerate_user_address_hashes(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('address', '0004_auto_20170226_1122'),
+        ("address", "0004_auto_20170226_1122"),
     ]
 
     operations = [

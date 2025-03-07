@@ -7,13 +7,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('basket', '0010_convert_to_valid_json'),
+        ("basket", "0010_convert_to_valid_json"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='lineattribute',
-            name='value',
-            field=models.JSONField(encoder=django.core.serializers.json.DjangoJSONEncoder, verbose_name='Value'),
+            model_name="lineattribute",
+            name="value",
+            field=models.JSONField(
+                encoder=django.core.serializers.json.DjangoJSONEncoder,
+                verbose_name="Value",
+            ),
         ),
     ]

@@ -9,13 +9,15 @@ import oscar.models.fields.slugfield
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalogue', '0008_auto_20160304_1652'),
+        ("catalogue", "0008_auto_20160304_1652"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='category',
-            name='slug',
-            field=oscar.models.fields.slugfield.SlugField(max_length=255, verbose_name='Slug'),
+            model_name="category",
+            name="slug",
+            field=oscar.models.fields.slugfield.SlugField(
+                max_length=255, verbose_name="Slug"
+            ),
         ),
     ]

@@ -12,7 +12,7 @@ def update_line_num_allocated(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('order', '0016_line_allocation_cancelled_line_num_allocated'),
+        ("order", "0016_line_allocation_cancelled_line_num_allocated"),
     ]
 
     operations = [

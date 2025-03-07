@@ -6,13 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('offer', '0010_conditionaloffer_combinations'),
+        ("offer", "0010_conditionaloffer_combinations"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='rangeproductfileupload',
-            name='upload_type',
-            field=models.CharField(choices=[('included', 'Included products upload'), ('excluded', 'Excluded products upload')], default='included', max_length=8),
+            model_name="rangeproductfileupload",
+            name="upload_type",
+            field=models.CharField(
+                choices=[
+                    ("included", "Included products upload"),
+                    ("excluded", "Excluded products upload"),
+                ],
+                default="included",
+                max_length=8,
+            ),
         ),
     ]

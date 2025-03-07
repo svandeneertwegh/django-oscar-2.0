@@ -7,13 +7,21 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('voucher', '0004_auto_20180228_0940'),
+        ("voucher", "0004_auto_20180228_0940"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='voucherset',
-            name='offer',
-            field=models.OneToOneField(blank=True, limit_choices_to={'offer_type': 'Voucher'}, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='voucher_set', to='offer.ConditionalOffer', verbose_name='Offer'),
+            model_name="voucherset",
+            name="offer",
+            field=models.OneToOneField(
+                blank=True,
+                limit_choices_to={"offer_type": "Voucher"},
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="voucher_set",
+                to="offer.ConditionalOffer",
+                verbose_name="Offer",
+            ),
         ),
     ]

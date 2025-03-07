@@ -7,17 +7,32 @@ import oscar.models.fields.autoslugfield
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('communication', '0002_reset_table_names'),
+        ("communication", "0002_reset_table_names"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='notification',
-            name='category',
+            model_name="notification",
+            name="category",
         ),
         migrations.AlterField(
-            model_name='communicationeventtype',
-            name='code',
-            field=oscar.models.fields.autoslugfield.AutoSlugField(blank=True, editable=False, help_text='Code used for looking up this event programmatically', max_length=128, populate_from='name', separator='_', unique=True, validators=[django.core.validators.RegexValidator(message="Code can only contain the uppercase letters (A-Z), digits, and underscores, and can't start with a digit.", regex='^[A-Z_][0-9A-Z_]*$')], verbose_name='Code'),
+            model_name="communicationeventtype",
+            name="code",
+            field=oscar.models.fields.autoslugfield.AutoSlugField(
+                blank=True,
+                editable=False,
+                help_text="Code used for looking up this event programmatically",
+                max_length=128,
+                populate_from="name",
+                separator="_",
+                unique=True,
+                validators=[
+                    django.core.validators.RegexValidator(
+                        message="Code can only contain the uppercase letters (A-Z), digits, and underscores, and can't start with a digit.",
+                        regex="^[A-Z_][0-9A-Z_]*$",
+                    )
+                ],
+                verbose_name="Code",
+            ),
         ),
     ]

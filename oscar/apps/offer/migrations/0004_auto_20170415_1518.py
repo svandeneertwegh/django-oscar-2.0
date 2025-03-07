@@ -8,12 +8,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('offer', '0003_auto_20161120_1707'),
+        ("offer", "0003_auto_20161120_1707"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='conditionaloffer',
-            options={'ordering': ['-priority', 'pk'], 'verbose_name': 'Conditional offer', 'verbose_name_plural': 'Conditional offers'},
+            name="conditionaloffer",
+            options={
+                "ordering": ["-priority", "pk"],
+                "verbose_name": "Conditional offer",
+                "verbose_name_plural": "Conditional offers",
+            },
         ),
     ]

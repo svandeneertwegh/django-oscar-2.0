@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('customer', '0004_email_save'),
+        ("customer", "0004_email_save"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='notification',
-            name='date_sent',
+            model_name="notification",
+            name="date_sent",
             field=models.DateTimeField(auto_now_add=True, db_index=True),
         ),
     ]

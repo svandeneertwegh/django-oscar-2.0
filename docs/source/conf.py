@@ -28,15 +28,15 @@ from django.utils.html import strip_tags
 from oscar import get_version, get_short_version
 
 
-oscar_folder = os.path.realpath(
-    os.path.join(os.path.dirname(__file__), '../..'))
+oscar_folder = os.path.realpath(os.path.join(os.path.dirname(__file__), "../.."))
 sandbox_folder = os.path.realpath(
-    os.path.join(os.path.dirname(__file__), '../../sandbox'))
+    os.path.join(os.path.dirname(__file__), "../../sandbox")
+)
 sys.path.append(oscar_folder)
 sys.path.append(sandbox_folder)
 
 # Specify settings module (which will be picked up from the sandbox)
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings_sphinx')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings_sphinx")
 
 django.setup()
 
@@ -48,13 +48,13 @@ django.setup()
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon',
-    'sphinxcontrib.spelling',
-    'sphinx_issues',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.todo",
+    "sphinx.ext.coverage",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.napoleon",
+    "sphinxcontrib.spelling",
+    "sphinx_issues",
 ]
 
 # Going with British English as the default because of history of the project
@@ -62,19 +62,19 @@ spelling_lang = "en_GB"
 spelling_word_list_filename = "spelling_wordlist.txt"
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # The suffix of source filenames.
-source_suffix = '.rst'
+source_suffix = ".rst"
 
 # The encoding of source files.
 # source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = "index"
 
 # General information about the project.
-project = 'django-oscar'
+project = "django-oscar"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -96,7 +96,7 @@ release = get_short_version()
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_draft']
+exclude_patterns = ["_draft"]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 # default_role = None
@@ -113,13 +113,13 @@ exclude_patterns = ['_draft']
 # show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = "sphinx"
 
 # A list of ignored prefixes for module index sorting.
 # modindex_common_prefix = []
 
 # Github repo for sphinx-issues
-issues_github_path = 'django-oscar/django-oscar'
+issues_github_path = "django-oscar/django-oscar"
 
 
 # -- Options for HTML output ---------------------------------------------------
@@ -128,7 +128,8 @@ issues_github_path = 'django-oscar/django-oscar'
 # a list of builtin themes.
 
 import sphinx_rtd_theme
-html_theme = 'sphinx_rtd_theme'
+
+html_theme = "sphinx_rtd_theme"
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -202,7 +203,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'django-oscardoc'
+htmlhelp_basename = "django-oscardoc"
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -217,11 +218,11 @@ htmlhelp_basename = 'django-oscardoc'
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
     (
-        'index',
-        'django-oscar.tex',
-        'django-oscar Documentation',
-        'David Winterbottom',
-        'manual',
+        "index",
+        "django-oscar.tex",
+        "django-oscar Documentation",
+        "David Winterbottom",
+        "manual",
     ),
 ]
 
@@ -255,16 +256,16 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (
-        'index',
-        'django-oscar',
-        'django-oscar Documentation',
-        ['David Winterbottom'],
+        "index",
+        "django-oscar",
+        "django-oscar Documentation",
+        ["David Winterbottom"],
         1,
     ),
 ]
 
 # Autodoc settings
-autoclass_content = 'class'
+autoclass_content = "class"
 
 # Better documenting of Django models
 # See http://djangosnippets.org/snippets/2533/
@@ -278,7 +279,7 @@ def process_docstring(app, what, name, obj, options, lines):
     if inspect.isclass(obj) and issubclass(obj, models.Model):
 
         # Ignore abstract models
-        if not hasattr(obj._meta, '_fields'):
+        if not hasattr(obj._meta, "_fields"):
             return lines
 
         # Grab the field list from the meta class
@@ -295,14 +296,14 @@ def process_docstring(app, what, name, obj, options, lines):
             if help_text:
                 # Add the model field to the end of the docstring as a param
                 # using the help text as the description
-                lines.append(':param %s: %s' % (field.attname, help_text))
+                lines.append(":param %s: %s" % (field.attname, help_text))
             else:
                 # Add the model field to the end of the docstring as a param
                 # using the verbose name as the description
-                lines.append(':param %s: %s' % (field.attname, verbose_name))
+                lines.append(":param %s: %s" % (field.attname, verbose_name))
 
             # Add the field's type to the docstring
-            lines.append(':type %s: %s' % (field.attname, type(field).__name__))
+            lines.append(":type %s: %s" % (field.attname, type(field).__name__))
 
     # Return the extended docstring
     return lines
@@ -310,4 +311,4 @@ def process_docstring(app, what, name, obj, options, lines):
 
 def setup(app):
     # Register the docstring processor with sphinx
-    app.connect('autodoc-process-docstring', process_docstring)
+    app.connect("autodoc-process-docstring", process_docstring)

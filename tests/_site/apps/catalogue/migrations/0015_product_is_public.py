@@ -6,13 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalogue', '0014_auto_20181115_1953'),
+        ("catalogue", "0014_auto_20181115_1953"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='product',
-            name='is_public',
-            field=models.BooleanField(default=True, help_text='Show this product in search results and catalogue listings.', verbose_name='Is public'),
+            model_name="product",
+            name="is_public",
+            field=models.BooleanField(
+                default=True,
+                help_text="Show this product in search results and catalogue listings.",
+                verbose_name="Is public",
+            ),
         ),
     ]

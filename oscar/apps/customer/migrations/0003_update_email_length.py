@@ -8,13 +8,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('customer', '0002_auto_20150807_1725'),
+        ("customer", "0002_auto_20150807_1725"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='productalert',
-            name='email',
-            field=models.EmailField(blank=True, db_index=True, max_length=254, verbose_name='Email'),
+            model_name="productalert",
+            name="email",
+            field=models.EmailField(
+                blank=True, db_index=True, max_length=254, verbose_name="Email"
+            ),
         ),
     ]

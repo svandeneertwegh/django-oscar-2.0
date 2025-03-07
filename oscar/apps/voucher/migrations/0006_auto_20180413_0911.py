@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('voucher', '0005_auto_20180402_1425'),
+        ("voucher", "0005_auto_20180402_1425"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='voucherset',
-            name='count',
-            field=models.PositiveIntegerField(verbose_name='Number of vouchers'),
+            model_name="voucherset",
+            name="count",
+            field=models.PositiveIntegerField(verbose_name="Number of vouchers"),
         ),
     ]

@@ -6,16 +6,24 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('order', '0010_auto_20200724_0909'),
+        ("order", "0010_auto_20200724_0909"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='orderdiscount',
-            options={'ordering': ['pk'], 'verbose_name': 'Order Discount', 'verbose_name_plural': 'Order Discounts'},
+            name="orderdiscount",
+            options={
+                "ordering": ["pk"],
+                "verbose_name": "Order Discount",
+                "verbose_name_plural": "Order Discounts",
+            },
         ),
         migrations.AlterModelOptions(
-            name='ordernote',
-            options={'ordering': ['-date_updated'], 'verbose_name': 'Order Note', 'verbose_name_plural': 'Order Notes'},
+            name="ordernote",
+            options={
+                "ordering": ["-date_updated"],
+                "verbose_name": "Order Note",
+                "verbose_name_plural": "Order Notes",
+            },
         ),
     ]

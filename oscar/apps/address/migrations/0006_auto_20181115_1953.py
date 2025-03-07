@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('address', '0005_regenerate_user_address_hashes'),
+        ("address", "0005_regenerate_user_address_hashes"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='country',
-            name='printable_name',
-            field=models.CharField(db_index=True, max_length=128, verbose_name='Country name'),
+            model_name="country",
+            name="printable_name",
+            field=models.CharField(
+                db_index=True, max_length=128, verbose_name="Country name"
+            ),
         ),
     ]

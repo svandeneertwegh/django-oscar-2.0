@@ -9,13 +9,21 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalogue', '0012_auto_20170609_1902'),
+        ("catalogue", "0012_auto_20170609_1902"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='productattribute',
-            name='option_group',
-            field=models.ForeignKey(blank=True, help_text='Select an option group if using type "Option" or "Multi Option"', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='product_attributes', to='catalogue.AttributeOptionGroup', verbose_name='Option Group'),
+            model_name="productattribute",
+            name="option_group",
+            field=models.ForeignKey(
+                blank=True,
+                help_text='Select an option group if using type "Option" or "Multi Option"',
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="product_attributes",
+                to="catalogue.AttributeOptionGroup",
+                verbose_name="Option Group",
+            ),
         ),
     ]

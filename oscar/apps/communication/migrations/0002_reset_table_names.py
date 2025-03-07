@@ -8,23 +8,23 @@ class Migration(migrations.Migration):
     atomic = False
 
     dependencies = [
-        ('communication', '0001_initial'),
-        ('order', '0008_auto_20190301_1035'),
+        ("communication", "0001_initial"),
+        ("order", "0008_auto_20190301_1035"),
     ]
 
     operations = [
         # Alter the names of the tables migrated from the customer app
         # to the Django defaults.
         migrations.AlterModelTable(
-            name='communicationeventtype',
+            name="communicationeventtype",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='email',
+            name="email",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='notification',
+            name="notification",
             table=None,
         ),
     ]

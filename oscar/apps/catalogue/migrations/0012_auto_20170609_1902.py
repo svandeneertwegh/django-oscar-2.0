@@ -8,18 +8,36 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalogue', '0011_auto_20170422_1355'),
+        ("catalogue", "0011_auto_20170422_1355"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='productattributevalue',
-            name='value_datetime',
-            field=models.DateTimeField(blank=True, null=True, verbose_name='DateTime'),
+            model_name="productattributevalue",
+            name="value_datetime",
+            field=models.DateTimeField(blank=True, null=True, verbose_name="DateTime"),
         ),
         migrations.AlterField(
-            model_name='productattribute',
-            name='type',
-            field=models.CharField(choices=[('text', 'Text'), ('integer', 'Integer'), ('boolean', 'True / False'), ('float', 'Float'), ('richtext', 'Rich Text'), ('date', 'Date'), ('datetime', 'Datetime'), ('option', 'Option'), ('multi_option', 'Multi Option'), ('entity', 'Entity'), ('file', 'File'), ('image', 'Image')], default='text', max_length=20, verbose_name='Type'),
+            model_name="productattribute",
+            name="type",
+            field=models.CharField(
+                choices=[
+                    ("text", "Text"),
+                    ("integer", "Integer"),
+                    ("boolean", "True / False"),
+                    ("float", "Float"),
+                    ("richtext", "Rich Text"),
+                    ("date", "Date"),
+                    ("datetime", "Datetime"),
+                    ("option", "Option"),
+                    ("multi_option", "Multi Option"),
+                    ("entity", "Entity"),
+                    ("file", "File"),
+                    ("image", "Image"),
+                ],
+                default="text",
+                max_length=20,
+                verbose_name="Type",
+            ),
         ),
     ]

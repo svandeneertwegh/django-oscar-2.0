@@ -8,7 +8,7 @@ from django.db.models.functions import Concat
 from oscar.core.loading import get_model
 
 # Needed for calling _get_value, the historical model can't be used for that.
-NonHistoricalProductAttributeValue = get_model('catalogue', 'ProductAttributeValue')
+NonHistoricalProductAttributeValue = get_model("catalogue", "ProductAttributeValue")
 
 
 logger = logging.getLogger(__name__)
@@ -18,24 +18,31 @@ def remove_duplicate_attributes(apps, schema_editor):
     """
     Removes duplicate attributes that have the same code and product class.
     """
-    ProductAttribute = apps.get_model('catalogue', 'ProductAttribute')
-    ProductAttributeValue = apps.get_model('catalogue', 'ProductAttributeValue')
+    ProductAttribute = apps.get_model("catalogue", "ProductAttribute")
+    ProductAttributeValue = apps.get_model("catalogue", "ProductAttributeValue")
     ProductClass = apps.get_model("catalogue", "ProductClass")
 
     # Instead of iterating over all attributes, we concat the code and product class pk
     # with a "|" so we can find duplicate attributes in one query.
-    duplicate_attributes = ProductAttribute.objects.filter(product_class__isnull=False).annotate(
-        code_and_product_class=Concat('code', Value('|'), 'product_class__pk', output_field=CharField())
-    ).values('code_and_product_class').annotate(
-        same_code_count=Count('code_and_product_class')
-    ).filter(same_code_count__gt=1)
+    duplicate_attributes = (
+        ProductAttribute.objects.filter(product_class__isnull=False)
+        .annotate(
+            code_and_product_class=Concat(
+                "code", Value("|"), "product_class__pk", output_field=CharField()
+            )
+        )
+        .values("code_and_product_class")
+        .annotate(same_code_count=Count("code_and_product_class"))
+        .filter(same_code_count__gt=1)
+    )
 
     for attribute in duplicate_attributes:
-        attribute_code, product_class_pk = attribute["code_and_product_class"].split("|")
+        attribute_code, product_class_pk = attribute["code_and_product_class"].split(
+            "|"
+        )
         product_class = ProductClass.objects.get(pk=product_class_pk)
         attributes = ProductAttribute.objects.filter(
-            code=attribute_code,
-            product_class=product_class
+            code=attribute_code, product_class=product_class
         )
         used_attributes = attributes.filter(productattributevalue__isnull=False)
         used_attribute_count = used_attributes.distinct().count()
@@ -54,10 +61,13 @@ def remove_duplicate_attributes(apps, schema_editor):
         # If we found multiple attributes that have values linked to them,
         # we must move them to one attribute and then delete the others.
         # We can only do this if the value_types are all the same!
-        ASSERTION_MESSAGE = """Duplicate attribute found with code: %s but different types!
+        ASSERTION_MESSAGE = (
+            """Duplicate attribute found with code: %s but different types!
         You could fix this by renaming the duplicate codes or by matching all types to one
         type and update the attribute values accordingly for their new type. After that you can
-        re-run the migration.""" % attribute_code
+        re-run the migration."""
+            % attribute_code
+        )
         assert used_attributes.values("type").distinct().count() == 1, ASSERTION_MESSAGE
 
         # Choose one attribute that will be used to move to and others to be deleted.
@@ -72,7 +82,11 @@ def remove_duplicate_attributes(apps, schema_editor):
                 # This means, if the product of the current 'attribute_value' already has a ProductAttributeValue
                 # linked to the 'to_be_used_attribute' attribute, we can't update the attribute on the
                 # 'attribute_value' as this would raise an IntegrityError.
-                to_be_used_attribute_value = to_be_used_attribute.productattributevalue_set.filter(product=product).first()
+                to_be_used_attribute_value = (
+                    to_be_used_attribute.productattributevalue_set.filter(
+                        product=product
+                    ).first()
+                )
                 if not to_be_used_attribute_value:
                     attribute_value.attribute = to_be_used_attribute
                     attribute_value.save()
@@ -83,8 +97,10 @@ def remove_duplicate_attributes(apps, schema_editor):
                     """ % (
                         product.id,
                         attribute.code,
-                        NonHistoricalProductAttributeValue._get_value(to_be_used_attribute_value),
-                        NonHistoricalProductAttributeValue._get_value(attribute_value)
+                        NonHistoricalProductAttributeValue._get_value(
+                            to_be_used_attribute_value
+                        ),
+                        NonHistoricalProductAttributeValue._get_value(attribute_value),
                     )
                     logger.warning(msg)
 
@@ -92,11 +108,10 @@ def remove_duplicate_attributes(apps, schema_editor):
             attribute.delete()
 
 
-
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalogue', '0023_auto_20210824_1414'),
+        ("catalogue", "0023_auto_20210824_1414"),
     ]
 
     operations = [

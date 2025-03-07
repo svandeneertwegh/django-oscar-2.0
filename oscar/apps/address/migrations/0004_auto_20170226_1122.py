@@ -8,18 +8,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('address', '0003_auto_20150927_1551'),
+        ("address", "0003_auto_20150927_1551"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='useraddress',
-            name='num_orders_as_billing_address',
-            field=models.PositiveIntegerField(default=0, verbose_name='Number of Orders as Billing Address'),
+            model_name="useraddress",
+            name="num_orders_as_billing_address",
+            field=models.PositiveIntegerField(
+                default=0, verbose_name="Number of Orders as Billing Address"
+            ),
         ),
         migrations.AlterField(
-            model_name='useraddress',
-            name='num_orders_as_shipping_address',
-            field=models.PositiveIntegerField(default=0, verbose_name='Number of Orders as Shipping Address'),
+            model_name="useraddress",
+            name="num_orders_as_shipping_address",
+            field=models.PositiveIntegerField(
+                default=0, verbose_name="Number of Orders as Shipping Address"
+            ),
         ),
     ]

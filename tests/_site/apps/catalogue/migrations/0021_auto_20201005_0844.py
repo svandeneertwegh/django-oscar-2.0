@@ -6,28 +6,36 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalogue', '0020_auto_20200801_0817'),
+        ("catalogue", "0020_auto_20200801_0817"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='category',
-            name='meta_description',
-            field=models.TextField(blank=True, null=True, verbose_name='Meta description'),
+            model_name="category",
+            name="meta_description",
+            field=models.TextField(
+                blank=True, null=True, verbose_name="Meta description"
+            ),
         ),
         migrations.AddField(
-            model_name='category',
-            name='meta_title',
-            field=models.CharField(blank=True, null=True, max_length=255, verbose_name='Meta title'),
+            model_name="category",
+            name="meta_title",
+            field=models.CharField(
+                blank=True, null=True, max_length=255, verbose_name="Meta title"
+            ),
         ),
         migrations.AddField(
-            model_name='product',
-            name='meta_description',
-            field=models.TextField(blank=True, null=True, verbose_name='Meta description'),
+            model_name="product",
+            name="meta_description",
+            field=models.TextField(
+                blank=True, null=True, verbose_name="Meta description"
+            ),
         ),
         migrations.AddField(
-            model_name='product',
-            name='meta_title',
-            field=models.CharField(blank=True, null=True, max_length=255, verbose_name='Meta title'),
+            model_name="product",
+            name="meta_title",
+            field=models.CharField(
+                blank=True, null=True, max_length=255, verbose_name="Meta title"
+            ),
         ),
     ]

@@ -12,20 +12,36 @@ models_AutoField = import_string(settings.DEFAULT_AUTO_FIELD)
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wishlists', '0003_auto_20181115_1953'),
+        ("wishlists", "0003_auto_20181115_1953"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='WishListSharedEmail',
+            name="WishListSharedEmail",
             fields=[
-                ('id', models_AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', models.EmailField(max_length=254, verbose_name='Email')),
-                ('wishlist', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='shared_emails', to='wishlists.wishlist', verbose_name='Wish List')),
+                (
+                    "id",
+                    models_AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("email", models.EmailField(max_length=254, verbose_name="Email")),
+                (
+                    "wishlist",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="shared_emails",
+                        to="wishlists.wishlist",
+                        verbose_name="Wish List",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Wish list shared email',
-                'abstract': False,
+                "verbose_name": "Wish list shared email",
+                "abstract": False,
             },
         ),
     ]

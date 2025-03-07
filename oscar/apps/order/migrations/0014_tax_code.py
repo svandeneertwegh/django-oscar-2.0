@@ -6,28 +6,39 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('order', '0013_json_option_value'),
+        ("order", "0013_json_option_value"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='line',
-            name='tax_code',
-            field=models.CharField(blank=True, max_length=64, null=True, verbose_name='VAT rate code'),
+            model_name="line",
+            name="tax_code",
+            field=models.CharField(
+                blank=True, max_length=64, null=True, verbose_name="VAT rate code"
+            ),
         ),
         migrations.AddField(
-            model_name='lineprice',
-            name='tax_code',
-            field=models.CharField(blank=True, max_length=64, null=True, verbose_name='VAT rate code'),
+            model_name="lineprice",
+            name="tax_code",
+            field=models.CharField(
+                blank=True, max_length=64, null=True, verbose_name="VAT rate code"
+            ),
         ),
         migrations.AddField(
-            model_name='order',
-            name='shipping_tax_code',
-            field=models.CharField(blank=True, max_length=64, null=True, verbose_name='Shipping VAT rate code'),
+            model_name="order",
+            name="shipping_tax_code",
+            field=models.CharField(
+                blank=True,
+                max_length=64,
+                null=True,
+                verbose_name="Shipping VAT rate code",
+            ),
         ),
         migrations.AddField(
-            model_name='surcharge',
-            name='tax_code',
-            field=models.CharField(blank=True, max_length=64, null=True, verbose_name='VAT rate code'),
+            model_name="surcharge",
+            name="tax_code",
+            field=models.CharField(
+                blank=True, max_length=64, null=True, verbose_name="VAT rate code"
+            ),
         ),
     ]

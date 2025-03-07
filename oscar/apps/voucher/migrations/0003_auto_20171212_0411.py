@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('voucher', '0002_auto_20170418_2132'),
+        ("voucher", "0002_auto_20170418_2132"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='voucher',
-            name='offers',
-            field=models.ManyToManyField(limit_choices_to={'offer_type': 'Voucher'}, related_name='vouchers', to='offer.ConditionalOffer', verbose_name='Offers'),
+            model_name="voucher",
+            name="offers",
+            field=models.ManyToManyField(
+                limit_choices_to={"offer_type": "Voucher"},
+                related_name="vouchers",
+                to="offer.ConditionalOffer",
+                verbose_name="Offers",
+            ),
         ),
     ]
