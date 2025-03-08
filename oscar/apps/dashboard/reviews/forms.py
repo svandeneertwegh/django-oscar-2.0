@@ -18,6 +18,12 @@ class DashboardProductReviewForm(forms.ModelForm):
         model = ProductReview
         fields = ("title", "body", "score", "status")
 
+    def __init__(self, *args, **kwargs):
+        super(DashboardProductReviewForm, self).__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs['class'] = 'form-control'
+        self.fields['body'].widget.attrs['class'] = 'form-control'
+        self.fields['score'].widget.attrs['class'] = 'mr-3'
+
 
 class ProductReviewSearchForm(forms.Form):
     STATUS_CHOICES = (("", "------------"),) + ProductReview.STATUS_CHOICES

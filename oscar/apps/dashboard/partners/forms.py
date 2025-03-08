@@ -146,9 +146,9 @@ class PartnerAddressForm(forms.ModelForm):
             "line1",
             "line2",
             "line3",
-            "line4",
+            "zipcode",
+            "city",
             "state",
-            "postcode",
             "country",
         )
         model = PartnerAddress

@@ -29,7 +29,7 @@ class AbstractAddress(models.Model):
         (DR, _("Dr")),
     )
 
-    POSTCODE_REQUIRED = "postcode" in settings.OSCAR_REQUIRED_ADDRESS_FIELDS
+    POSTCODE_REQUIRED = "zipcode" in settings.OSCAR_REQUIRED_ADDRESS_FIELDS
 
     # Regex for each country. Not listed countries don't use postcodes
     # Based on http://en.wikipedia.org/wiki/List_of_postal_codes
@@ -228,9 +228,9 @@ class AbstractAddress(models.Model):
     line1 = models.CharField(_("First line of address"), max_length=255)
     line2 = models.CharField(_("Second line of address"), max_length=255, blank=True)
     line3 = models.CharField(_("Third line of address"), max_length=255, blank=True)
-    line4 = models.CharField(_("City"), max_length=255, blank=True)
+    zipcode = UppercaseCharField(_("Post/Zip-code"), max_length=64, blank=True)
+    city = models.CharField(_("City"), max_length=255, blank=True)
     state = models.CharField(_("State/County"), max_length=255, blank=True)
-    postcode = UppercaseCharField(_("Post/Zip-code"), max_length=64, blank=True)
     country = models.ForeignKey(
         "address.Country", on_delete=models.CASCADE, verbose_name=_("Country")
     )
@@ -246,9 +246,9 @@ class AbstractAddress(models.Model):
         "line1",
         "line2",
         "line3",
-        "line4",
+        "zipcode",
+        "city",
         "state",
-        "postcode",
         "country",
     ]
 
@@ -258,9 +258,9 @@ class AbstractAddress(models.Model):
         "line1",
         "line2",
         "line3",
-        "line4",
+        "zipcode",
+        "city",
         "state",
-        "postcode",
         "country",
     ]
 
@@ -286,9 +286,9 @@ class AbstractAddress(models.Model):
             "line1",
             "line2",
             "line3",
-            "line4",
+            "zipcode",
+            "city",
             "state",
-            "postcode",
         ]:
             if self.__dict__[field]:
                 self.__dict__[field] = self.__dict__[field].strip()
@@ -318,20 +318,13 @@ class AbstractAddress(models.Model):
             # Validate postcode against regex for the country if available
             if regex and not re.match(regex, postcode):
                 msg = _("The postcode '%(postcode)s' is not valid for %(country)s") % {
-                    "postcode": self.postcode,
+                    "postcode": self.zipcode,
                     "country": self.country,
                 }
                 raise exceptions.ValidationError({"postcode": [msg]})
 
     def _update_search_text(self):
         self.search_text = self.join_fields(self.search_fields, separator=" ")
-
-    # Properties
-
-    @property
-    def city(self):
-        # Common alias
-        return self.line4
 
     @property
     def summary(self):
