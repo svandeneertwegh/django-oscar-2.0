@@ -5,4 +5,4 @@ svandeneertwegh - 7 maart 2025
 -> addresses: changed line4 field to city name.
 -> addresses: changed postcode field to zipcode name.
 -> addresses: ordering from addresses everywhere changed.
--> products: add is_featured boolean and added summary field
+-> products: added is_featured and summary fields.
