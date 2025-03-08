@@ -425,11 +425,15 @@ class AbstractProduct(models.Model):
         pgettext_lazy("Product title", "Title"), max_length=255, blank=True
     )
     slug = SlugField(_("Slug"), max_length=255, unique=False)
+
     description = models.TextField(_("Description"), blank=True)
     meta_title = models.CharField(
         _("Meta title"), max_length=255, blank=True, null=True
     )
     meta_description = models.TextField(_("Meta description"), blank=True, null=True)
+
+    is_featured = models.BooleanField(_("Is featured?"), default=False)
+    summary = models.TextField(_("Product summary"), blank=True)
 
     priority = models.SmallIntegerField(
         _("Priority"),
@@ -1307,12 +1311,12 @@ class AbstractProductAttributeValue(models.Model):
     def __str__(self):
         return self.summary()
 
-    def summary(self):
-        """
-        Gets a string representation of both the attribute and it's value,
-        used e.g in product summaries.
-        """
-        return "%s: %s" % (self.attribute.name, self.value_as_text)
+    # def summary(self):
+    #     """
+    #     Gets a string representation of both the attribute and it's value,
+    #     used e.g in product summaries.
+    #     """
+    #     return "%s: %s" % (self.attribute.name, self.value_as_text)
 
     @property
     def value_as_text(self):
