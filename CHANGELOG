@@ -1,0 +1,7 @@
+CHANGELOG
+-------------------------
+svandeneertwegh - 7 maart 2025
+-------------------------
+-> addresses: changed line4 to city modelfield.
+-> postcode modelfield renamed to zipcode.
+-> ordering from addresses everywhere changed.
