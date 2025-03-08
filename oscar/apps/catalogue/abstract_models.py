@@ -432,7 +432,7 @@ class AbstractProduct(models.Model):
     )
     meta_description = models.TextField(_("Meta description"), blank=True, null=True)
 
-    is_featured = models.BooleanField(_("Is featured?"), default=False)
+    is_featured = models.BooleanField(_("Is featured?"), default=False, help_text=_('Is this product featured?'))
     summary = models.TextField(_("Product summary"), blank=True)
 
     priority = models.SmallIntegerField(

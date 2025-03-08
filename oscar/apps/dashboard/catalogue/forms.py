@@ -229,8 +229,10 @@ class ProductForm(SEOFormMixin, forms.ModelForm):
             "title",
             "upc",
             "description",
+            "summary",
             "is_public",
             "is_discountable",
+            "is_featured",
             "structure",
             "slug",
             "meta_title",
@@ -238,6 +240,7 @@ class ProductForm(SEOFormMixin, forms.ModelForm):
         ]
         widgets = {
             "structure": forms.HiddenInput(),
+            "summary": forms.Textarea(attrs={"class": "no-widget-init form-control"}),
             "meta_description": forms.Textarea(attrs={"class": "no-widget-init"}),
         }
 
